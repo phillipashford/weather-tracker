@@ -6,13 +6,13 @@ The original script 'weather_tracker.py' was copied directly from that repositor
 
 **Upcoming changes include:**
 
-- Search by city name
-- [x] search by zip code
-- Add weather warning alerts
-- Map of queried location
-    - precipitation
-    - cloud cover
-- Include webcam imagery of location
-- Conversion to JavaScript
-- Building a webpage to host the script
-    - Displaying the forecast with graphics
+- [ ] Search by city name
+- [x] Search by zip code
+- [ ] Add weather warning alerts
+- [ ] Map of queried location
+    - [ ] precipitation
+    - [ ] cloud cover
+- [ ] Include webcam imagery of location
+- [ ] Conversion to JavaScript
+- [ ] Building a webpage to host the script
+    - [ ] Displaying the forecast with graphics
