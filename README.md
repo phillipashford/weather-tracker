@@ -6,7 +6,7 @@ The original script 'weather_tracker.py' was copied directly from that repositor
 
 **Upcoming changes include:**
 
-- Search by city name, search by zip code
+- Search by city name, ~~search by zip code~~
 - Add weather warning alerts
 - Map of queried location
     - precipitation
