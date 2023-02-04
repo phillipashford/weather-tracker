@@ -19,3 +19,4 @@ The original script 'weather_tracker.py' was copied directly from that repositor
 - [ ] Conversion to JavaScript
 - [ ] Building a webpage to host the script
     - [ ] Displaying the forecast with graphics
+- [] Add selection of API's for user to query from (e.g. NOAA, Openweather, NWS, etc.)
