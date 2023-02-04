@@ -13,10 +13,44 @@ import json
 
 ####################
 # Capture user input
+####################
 
-lat = input('Please enter your latitude. ')
+# Determine location format
 
-lon = input('Please enter your longitude. ')
+valid_input = False
+
+while (valid_input == False):
+    
+    loc_format = input('Enter 1 to use geographic coordinates for your query. Enter 2 to use a zipcode for your query. ')
+
+    if (loc_format == "1"):
+
+        valid_input = True
+
+        # Search by geographic coordinates
+        lat = input('Please enter your latitude. ')
+        lon = input('Please enter your longitude. ')
+
+    elif (loc_format == "2"):
+
+        valid_input = True
+
+        # Search by Zipcode
+        zipcode = input('Please enter your zipcode. ')
+        country_code = input('Please enter your country code. ')
+
+        # Make call to OpenWeather's Geocode API, to receive zipcode's geo. coordinates in response.
+        zipcode_response = requests.get(f"http://api.openweathermap.org/geo/1.0/zip?zip={zipcode},{country_code}&appid={config.weather_api_key}") 
+
+        # Convert the response to a JSON object
+        zipcode_data = response_current.json()
+        
+        # Assign coordinate values to variables
+        lat = zipcode_data["coord"]["lat"]
+        lon = zipcode_data["coord"]["lon"]
+
+    else:
+        print('Please enter 1 or 2 to continue. ')
 
 ####################
 # Access current weather conditions
