@@ -4,10 +4,13 @@ The initial program began as a simple python script that I ran in jupyter notebo
 
 The original script 'weather_tracker.py' was copied directly from that repository, so that I could expand upon it here.
 
+**Completed Improvements**
+
+- [x] Search by zip code
+
 **Upcoming changes include:**
 
 - [ ] Search by city name
-- [x] Search by zip code
 - [ ] Add weather warning alerts
 - [ ] Map of queried location
     - [ ] precipitation
