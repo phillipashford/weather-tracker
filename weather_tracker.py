@@ -1,19 +1,22 @@
 # chatGPT prompt
 # A weather tracker: Create a program that allows users to input their location and displays the current weather conditions and a 5-day forecast. The program should use an API to access current weather data and display it in a user-friendly format.
 
-####################
+########################################
+# Imports
+########################################
+
 # Import 'requests' library for making calls to the API
 import requests
 
 # Import config.py to shelter api key
 import config
 
-# Import json library to work with API responses and render data in a user-friendly format
+# Import 'json' library to work with API responses and render data in a user-friendly format
 import json
 
-####################
+########################################
 # Capture user input
-####################
+########################################
 
 # Determine location format
 
@@ -52,8 +55,9 @@ while (valid_input == False):
     else:
         print('Please enter 1 or 2 to continue. ')
 
-####################
+########################################
 # Access current weather conditions
+########################################
 
 # API Documentation: https://openweathermap.org/current
 
@@ -74,8 +78,9 @@ main = current_data['main']
 print(f"Current conditions at your requested locale: {current_weather[0]['description'].capitalize()}")
 print(f"The current temperature is {main['temp']} degrees celsius.")
 
-####################
-# Display 5 day forecast
+########################################
+# Access 5 day forecast
+########################################
 
 # API Documentation: https://openweathermap.org/forecast5
 
@@ -89,9 +94,12 @@ five_day_data = response_five_day.json()
 
 forecasts = five_day_data['list']
 
+# Display 5 day forecast to user
 # Loop through the forecasts included in the JSON object, printing the date and time of the forecast, the description of the weather and the temperature to the user.
 
 for i in range(len(forecasts)):
     weather = forecasts[i]['weather']
     forecast_main = forecasts[i]['main']
     print(f"{forecasts[i]['dt_txt']} | {weather[0]['description'].capitalize()} with a temperature of {forecast_main['temp']}" )
+
+
