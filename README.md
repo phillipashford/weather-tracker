@@ -10,7 +10,7 @@ Initially built a simple version of this in python [weather_tracker.py](https://
 
 **Upcoming changes include:**
 
-- [ ] Convert program to JavaScript
+- [x] Convert program to JavaScript
 - [ ] Build a webpage to host the script
     - [ ] Display the forecast with graphics
 - [ ] Search by city name
