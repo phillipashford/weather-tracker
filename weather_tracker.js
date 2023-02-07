@@ -31,8 +31,6 @@ while (valid_input == false) {
           url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=imperial`,
           success: function(data) {
             console.log(`Current Conditions | ${data.weather[0].description}`);
-            const weather = document.getElementById("Weather");
-            weather.innerHTML = `${data.weather[0].description}`; 
           },
           error: function(error) {
             console.error(error);
@@ -68,7 +66,7 @@ while (valid_input == false) {
         ////////////////////////////////////////////////////////////////////////////////        
         $.ajax({
           type: 'GET',
-          url: `https://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country_code}&appid=${weatherApiKey}`,
+          url: `http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country_code}&appid=${weatherApiKey}`,
           success: function(data) {
             var lat = data.coord.lat;
             var lon = data.coord.lon;
@@ -110,4 +108,24 @@ while (valid_input == false) {
     }
 
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Adding the Leaflet Map
+////////////////////////////////////////////////////////////////////////////////
+var map = L.map('map').setView([lat, lon], 7);
+
+///////////Base Layer///////////
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+              attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+              maxZoom: 16
+            }).addTo(map);
+
+const openWeatherLayers = ["clouds_new", "precipitation_new", "temp_new"];          
+
+///////////Openweather Layer Template///////////
+L.tileLayer('https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=220f18467cf4fba443b6c18eb9d7796b', {
+              maxZoom: 19,
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
 
