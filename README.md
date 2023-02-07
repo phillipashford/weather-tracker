@@ -2,7 +2,7 @@
 
 A client-side weather application, using the OpenWeather API.
 
-Initially built a simple version of this in [python](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py). Converted code to [Javscript](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.js) to add features.
+Initially built a simple version of this in [Python](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py). Converted code to [Javscript](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.js) to add features.
 
 **Completed Improvements**
 
