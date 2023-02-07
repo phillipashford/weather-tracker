@@ -1,8 +1,8 @@
-# Working with [Open Weather's API](https://openweathermap.org/) with Python
+# Working with [Open Weather's API](https://openweathermap.org/) with Python and Javascript
 
-The initial program began as a simple python script that I ran in jupyter notebooks. It's actually a constituent of a small collection of scripts in my repository [chatgpt-prompts_problemsolving](https://github.com/phillipashford/chatgpt_prompts_problemsolving) wherein I solved problem prompts to try my hand at a range of tasks.
+A client-side weather application, using the OpenWeather API.
 
-The original script 'weather_tracker.py' was copied directly from that repository, so that I could expand upon it here.
+Initially built a simple version of this in python [weather_tracker.py](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py). Converted code to Javscript [weather_tracker.js](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.js) to add features.
 
 **Completed Improvements**
 
@@ -10,13 +10,13 @@ The original script 'weather_tracker.py' was copied directly from that repositor
 
 **Upcoming changes include:**
 
+- [ ] Convert program to JavaScript
+- [ ] Build a webpage to host the script
+    - [ ] Display the forecast with graphics
 - [ ] Search by city name
-- [ ] Add weather warning alerts
 - [ ] Map of queried location
     - [ ] precipitation
     - [ ] cloud cover
 - [ ] Include webcam imagery of location
-- [ ] Conversion to JavaScript
-- [ ] Building a webpage to host the script
-    - [ ] Displaying the forecast with graphics
+- [ ] Add weather warning alerts
 - [ ] Add selection of API's for user to query from (e.g. NOAA, Openweather, NWS, etc.)
