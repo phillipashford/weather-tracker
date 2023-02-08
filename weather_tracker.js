@@ -66,8 +66,8 @@ while (valid_input == false) {
         ////////////////////////////////////////////////////////////////////////////////        
         $.ajax({
           type: 'GET',
-          url: `http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country_code}&appid=${weatherApiKey}`,
-          dataType: "jsonp",
+          url: `https://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country_code}&appid=${weatherApiKey}`,
+          // dataType: "jsonp",
           success: function(data) {
             
             var lat = data.coord.lat;
@@ -127,6 +127,6 @@ const openWeatherLayers = ["clouds_new", "precipitation_new", "temp_new"];
 ///////////Openweather Layer Template///////////
 L.tileLayer(`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${weatherApiKey}`, {
               maxZoom: 19,
-              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
