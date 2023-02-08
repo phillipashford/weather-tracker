@@ -1,4 +1,5 @@
-config.js
+config.*
 *.ipynb
 *.pyc
 node_modules*
+package*
