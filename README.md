@@ -1,6 +1,6 @@
 # Working with [Open Weather's API](https://openweathermap.org/) with Python and JavaScript
 
-A client-side weather application, using the OpenWeather API.
+A weather application, using the OpenWeather API.
 
 I initially built a simple version of this in [Python](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py), which I ran in a Jupyter notebook. 
 - It captures user input (geo. coordinates or zipcode)
@@ -9,7 +9,7 @@ I initially built a simple version of this in [Python](https://github.com/philli
 - Works with the responses to make additional requests if necessary
 - Finally, reports back (current weather, and 5 day forecast) to the user. 
 
-After deciding to make a complete client-side weather application, I converted the code to [JavaScript](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.js) to add [more features](#improvements).
+After deciding to make a complete weather application, I converted the code to [JavaScript](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.js) to add [more features](#improvements).
 
 <h2 id="contents">Contents</h2>
 
