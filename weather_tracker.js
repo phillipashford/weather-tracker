@@ -1,6 +1,19 @@
 // Imports
 import { weatherApiKey } from "./config.js";
 
+// Openweather API Endpoints
+  // [0] Current weather
+  // [1] 5 day forecast
+  // [2] Geocoding
+  // [3] Map layers
+openweatherEndpoints = [
+  `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=imperial`,
+  `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=imperial`, 
+  `https://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country_code}&appid=${weatherApiKey}`, 
+  `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${weatherApiKey}`
+
+];
+
 // Capture user input
 var valid_input = false
 
