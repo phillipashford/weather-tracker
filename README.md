@@ -1,4 +1,4 @@
-# Building a Weather App Utilizing Third Part API's
+# Building a Weather App Utilizing Third Party API's
 
 I built this program to understand how Python and Javascript work with API's, and to share my understanding and work process with others.
 
