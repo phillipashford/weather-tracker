@@ -16,8 +16,13 @@ app.get('/proxy', (req, res) => {
   const url = req.query.url;
   console.log(url);
 
+  // Define custom User-Agent header
+  const headers = {
+    'User-Agent': 'weather_tracker-v1.0'
+  };
+
   // Send request to the outside API endpoint (url) using the request module
-  request(url, (error, response, body) => {
+  request({ url: url, headers: headers }, (error, response, body) => {
     if (error) {
       // Returns status code if there's an error
       res.status(500).send({ error });
