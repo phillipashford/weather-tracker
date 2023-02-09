@@ -20,7 +20,7 @@ ___
 - [Troubleshooting](#trouble)
     - [Trouble finding and connecting a reliable geocoding API](#geocoding)
     - [Unsuccessful attempt with server-side proxy](#proxy)
-    - [Successful attempt with Proxy + Nominatim API](#nominatim)
+    - [Successful attempt with proxy + Nominatim API](#nominatim)
 
 <h2 id="improvements">Upcoming and Completed Improvements</h2>
 
@@ -184,6 +184,8 @@ Nominatim is free to use so long as one meets the requirements of their [usage p
 - Max 1 request/second (Not a problem since we're just running a single query per user request).
 - Provide a valid HTTP Referer or User-Agent identifying the application (Added to Express app.)
 - Clearly display attribution as suitable for your medium.
-- Data is provided under the [ODbL license](https://opendatacommons.org/licenses/odbl/) which requires to share alike. N/a for this Non-commercial project.
+- Data is provided under the [ODbL license](https://opendatacommons.org/licenses/odbl/) which requires to share alike.
 
-Finally! This fixed the issue! Good to know it wasn't my code but rather Openweather's API!
+Admittedly the proxy that I built is unnecessary for my GET requests to Nominatim (and the three endpoints at Openweather that worked), but it ensures I will avoid CORS issues that may arise due to API updates in the future.
+
+Finally! Using the Nominatim API fixed the issue! Good to know it wasn't my code but rather Openweather's API!
