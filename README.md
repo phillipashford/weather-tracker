@@ -1,28 +1,26 @@
-# Working with [Open Weather's API](https://openweathermap.org/) with Python and JavaScript
+# Building a Weather App Utilizing Third Part API's
 
-A weather application, using the OpenWeather API.
+I built this program to understand how Python and Javascript work with API's, and to share my understanding and work process with others.
 
-I initially built a simple version of this in [Python](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py), which I ran in a Jupyter notebook. 
-- It captures user input (geo. coordinates or zipcode)
-- Uses the values supplied by the user to make GET Requests to Openweather's API
-- Receives the API's responses
-- Works with the responses to make additional requests if necessary
-- Finally, reports back (current weather, and 5 day forecast) to the user. 
+I documented:
+- [The tools I used](#tools) (regardless of whether I kept them for the final version)
+- [My step-by-step process](#process) (mistakes included) 
+- [My troublehsooting process](#trouble)
 
-After deciding to make a complete weather application, I converted the code to [JavaScript](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.js) to add [more features](#improvements).
-
+___
 <h2 id="contents">Contents</h2>
 
 ___
-- [Upcoming and Completed Improvements](#improvements)
+- [Completed Features](#features)
 - [Tools I Used](#tools)
 - [Process](#process)
 - [Troubleshooting](#trouble)
     - [Trouble finding and connecting a reliable geocoding API](#geocoding)
     - [Unsuccessful attempt with server-side proxy](#proxy)
     - [Successful attempt with proxy + Nominatim API](#nominatim)
+- [Upcoming Features](#upcoming)
 
-<h2 id="improvements">Upcoming and Completed Improvements</h2>
+<h2 id="features">Completed Features</h2>
 
 [Return to Contents ^](#contents)
 
@@ -32,28 +30,24 @@ ___
 - ~~[ ] Search by city name~~
 - [x] Search by free-form query
 - [x] Build a webpage to host the script
-    - [ ] Build UI to display map, current weather, climate charts, and forecast 
-    - [ ] Display the forecast with graphics
-    - [ ] Clicking on map updates data to coordinates of click
+    - [x] Build UI to display map, current weather, climate charts, and forecast 
 - [x] Map of queried location
     - [x] precipitation
     - [x] cloud cover
     - [x] temperature
-- [ ] Include webcam imagery closest to locale
-- [ ] Add weather warning alerts
-- [ ] Add in geolocation services
-- [ ] Add climate charts (precipitation and temperature) based on historical data
-- [ ] Add selection of API's for user to query from (e.g. NOAA, Openweather, NWS, etc.)
 
-<h2 id="tools">Tools I Used</h2>
+<h2 id="tools">Tools I Worked with To Build This Project</h2>
 
 [Return to Contents ^](#contents)
 ___
-- Openweather's API's
+- Python
+- JavaScript
+- [Openweather's API's](https://openweathermap.org/)
     - Geocoding API
     - Current weather API
     - 5 day forecast API
     - Map layers API
+- [Nominatim API](https://nominatim.org/release-docs/develop/api/Search/) 
 - Jupyter Notebook
 - jQuery
 - Axios
@@ -67,6 +61,16 @@ ___
 [Return to Contents ^](#contents)
 
 ___
+I initially built a simple version of this in [Python](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py), which I ran in a Jupyter notebook. 
+- It captured user input (geo. coordinates or zipcode)
+- Used the values supplied by the user to make GET Requests to Openweather's API
+- Received the API's responses
+- Worked with the responses to make additional requests if necessary
+- Finally, reported back (current weather, and 5 day forecast) to the user. 
+
+After deciding to make a complete weather application, I converted the code to [JavaScript](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.js) to add [more features](#upcoming).
+
+### Steps I Took
 
 1. Write [Python script](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py).
 1. Convert to JavaScript.
@@ -81,12 +85,13 @@ ___
     1. [Troubleshoot geocoding API error](#trouble)
         1. Checked syntax/endpoint/variables
         1. Made proxy requests
-        1. Built server-side proxy
+        1. Built server-side [proxy](#proxy)
             1. Initialized new Node.js project and installed the Express framework
             1. Defined proxy endpoint
             1. Wrote http request/response logic in Express app
             1. Edited client-side jquery http requests to communicate with the server-side proxy
         1. Changed GET request library from jQuery to Axios
+        1. Replaced Openweather geocodoing API with [Nominatim API](#nominatim)
 1. Build [webpage](https://github.com/phillipashford/weather-tracker/blob/main/index.html).
 
 
@@ -189,3 +194,16 @@ Nominatim is free to use so long as one meets the requirements of their [usage p
 Admittedly the proxy that I built is unnecessary for my GET requests to Nominatim (and the three endpoints at Openweather that worked), but it ensures I will avoid CORS issues that may arise due to API updates in the future.
 
 Finally! Using the Nominatim API fixed the issue! Good to know it wasn't my code but rather Openweather's API!
+
+<h2 id="upcoming">Upcoming Features</h2>
+
+[Return to Contents ^](#contents)
+
+___
+- [ ] Display the forecast with graphics
+- [ ] Clicking on map updates data to coordinates of click
+- [ ] Include webcam imagery closest to locale
+- [ ] Add weather warning alerts
+- [ ] Add in geolocation services
+- [ ] Add climate charts (precipitation and temperature) based on historical data
+- [ ] Add selection of API's for user to query from (e.g. NOAA, Openweather, NWS, etc.)
