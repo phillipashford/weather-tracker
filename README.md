@@ -163,3 +163,14 @@ After much headscratching and sifting through stackoverflow threads, I went back
 Because the other 3 API's never returned a CORS error and because the Geocoding API had worked previously server-side with my Python script, **I came to the conclusion that the problem was most likely Openweather's Geocoding API itself.**
 
 This was very disappointing after all the effort I put into trying to work around errors that I assumed were on my end. Nevertheless, I turned my attention to finding a suitable (and reliable) geocoding API.
+
+#### Attempt with Nominatim
+
+[Nominatim](https://nominatim.org/) 'uses OpenStreetMap data to find locations on Earth by name and address (geocoding)'. 
+
+Nominatim is free to use so long as one meets the requirements of their [usage policy] (https://operations.osmfoundation.org/policies/nominatim/). 
+
+- Max 1 request/second (Not a problem since we're just running a single query per user request).
+- Provide a valid HTTP Referer or User-Agent identifying the application (Added to Express app.)
+- Clearly display attribution as suitable for your medium.
+- Data is provided under the [ODbL license](https://opendatacommons.org/licenses/odbl/) which requires to share alike. N/a for this Non-commercial project.
