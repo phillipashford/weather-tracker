@@ -6,52 +6,28 @@ var lat;
 var lon;
 
 // Capture user input
-var valid_input = false
+var query = prompt("Please enter your location");
 
-while (valid_input == false) {
+axios.get('http://127.0.0.1:3000/proxy', {
+    params: {
+        url: `https://nominatim.openstreetmap.org/?addressdetails=1&q=${query}&format=json&limit=1`
+    }
+})
+.then(function (response) {
 
-  let loc_format = prompt('Enter 1 to use geographic coordinates for your query. Enter 2 to use a zipcode for your query. ');
+    var lat = response.lat;
+    var lon = response.lon;
 
-  // Determine location info format
-  if (loc_format == "1") {
-      
-      valid_input = true;
-  
-      // Search by geographic coordinates
-      var lat = prompt('Please enter your latitude. ');
-      var lon = prompt('Please enter your longitude. ');
-  
-  } else if (loc_format == "2") {
-  
-      valid_input = true;
-  
-      // Search by Zipcode
-      var zipcode = prompt('Please enter your zipcode. ');
-      var country_code = prompt('Please enter your country code. ');
-      let url = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country_code}&appid=${weatherApiKey}`;
-  
-      axios.get('http://127.0.0.1:3000/proxy', {
-          params: {
-              url: url
-          }
-      })
-      .then(function (response) {
-          var lat = response.data.coord.lat;
-          var lon = response.data.coord.lon;
-      })
-      .catch(function (error) {
-          console.error(error);
-      });
-            
-  }  
+    getWeather(lat, lon);
+    getForecast(lat, lon);
+    getMapLayers();
+})
+.catch(function (error) {
+    console.error(error);
+});
 
-} 
 
-getWeather();
-getForecast();
-getMapLayers();
-
-async function getWeather() {
+async function getWeather(lat, lon) {
 
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=imperial`;
 
@@ -63,14 +39,14 @@ async function getWeather() {
       });
       console.log(response.data);
       console.log(`Current Conditions | ${response.data.weather[0].description}`);
-  } catch (error) {
+  } catch (error) {x
       console.error(error);
       console.log(error.message);
   }
   
 }
 
-async function getForecast() {
+async function getForecast(lat, lon) {
   try {
       const response = await axios.get('http://127.0.0.1:3000/proxy', {
           params: {
