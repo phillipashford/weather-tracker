@@ -18,7 +18,7 @@ ___
 - [Tools I Used](#tools)
 - [Process](#process)
 - [Troubleshooting](#trouble)
-    - [Openweather geocoding API error response](#geocoding-error)
+    - [Finding and connecting a reliable geocoding API](#geocoding)
 
 <h2 id="improvements">Upcoming and Completed Improvements</h2>
 
@@ -50,7 +50,9 @@ ___
     - Current weather API
     - 5 day forecast API
     - Map layers API
+- Jupyter Notebook
 - jQuery
+- Axios
 - Leaflet
 - Bootstrap
 - Node.js/Express
@@ -89,7 +91,7 @@ ___
 
 [Return to Contents ^](#contents)
 ___
-<h3 id="geocoding-error">Errors in Openweather's Geocoding API response</h3>
+<h3 id="geocoding">Finding and connecting a reliable geocoding API</h3>
 
 In running Python in a Notebook, [Openweather's geocoding API](https://openweathermap.org/api/geocoding-api) endpoint worked flawlessly in returning a GET response.
 
@@ -139,5 +141,25 @@ I decided to do this with Node.js and Express because I have a fullstack Javascr
 After building the proxy, I successfully received responses from 3 of the API endpoints - but had a `304 not modified error` from the geocoding API request. So I deleted my browser's cache and retried, with no luck. 
 
 Thinking perhaps the 'request' library had an issue, I updated it to no avail. Then I imported Axios and converted my GET requests to be handled by it instead of jQuery. Alas, no luck still. 
+```js
+let url = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country_code}&appid=${weatherApiKey}`;
 
-After much headscratching and sifting through stackoverflow threads, I went back to my Python code and ran it again in a Jupyter notebook. This time it broke because of the GET request to the geocoding API. I knew then that the problem was most likely Openweather's Geocoding API itself.
+axios.get('http://127.0.0.1:3000/proxy', {
+    params: {
+        url: url
+    }
+})
+.then(function (response) {
+    var lat = response.data.coord.lat;
+    var lon = response.data.coord.lon;
+})
+.catch(function (error) {
+    console.error(error);
+});
+```
+
+After much headscratching and sifting through stackoverflow threads, I went back to my Python code and ran it again in a Jupyter notebook. This time it broke because of the GET request to the geocoding API. 
+
+Because the other 3 API's never returned a CORS error and because the Geocoding API had worked previously server-side with my Python script, **I came to the conclusion that the problem was most likely Openweather's Geocoding API itself.**
+
+This was very disappointing after all the effort I put into trying to work around errors that I assumed were on my end. Nevertheless, I turned my attention to finding a suitable (and reliable) geocoding API.
