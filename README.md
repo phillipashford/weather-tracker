@@ -16,8 +16,8 @@ ___
 - [Process](#process)
 - [Troubleshooting](#trouble)
     - [Trouble finding and connecting a reliable geocoding API](#geocoding)
-    - [Unsuccessful attempt with server-side proxy](#proxy)
-    - [Successful attempt with proxy + Nominatim API](#nominatim)
+        - [Unsuccessful attempt with server-side proxy](#proxy)
+        - [Successful attempt with proxy + Nominatim API](#nominatim)
 - [Upcoming Features](#upcoming)
 
 <h2 id="features">Completed Features</h2>
