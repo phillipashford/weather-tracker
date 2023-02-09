@@ -18,7 +18,9 @@ ___
 - [Tools I Used](#tools)
 - [Process](#process)
 - [Troubleshooting](#trouble)
-    - [Finding and connecting a reliable geocoding API](#geocoding)
+    - [Trouble finding and connecting a reliable geocoding API](#geocoding)
+    - [Unsuccessful attempt with server-side proxy](#proxy)
+    - [Successful attempt with Proxy + Nominatim API](#nominatim)
 
 <h2 id="improvements">Upcoming and Completed Improvements</h2>
 
@@ -26,12 +28,13 @@ ___
 
 ___
 - [x] Convert program to JavaScript
-- [x] Search by zip code
+- ~~[x] Search by zip code~~
+- ~~[ ] Search by city name~~
+- [x] Search by free-form query
 - [x] Build a webpage to host the script
     - [ ] Build UI to display map, current weather, climate charts, and forecast 
     - [ ] Display the forecast with graphics
     - [ ] Clicking on map updates data to coordinates of click
-- [ ] Search by city name
 - [x] Map of queried location
     - [x] precipitation
     - [x] cloud cover
@@ -91,8 +94,9 @@ ___
 
 [Return to Contents ^](#contents)
 ___
-<h3 id="geocoding">Finding and connecting a reliable geocoding API</h3>
+<h3 id="geocoding">Trouble finding and connecting a reliable geocoding API</h3>
 
+___
 In running Python in a Notebook, [Openweather's geocoding API](https://openweathermap.org/api/geocoding-api) endpoint worked flawlessly in returning a GET response.
 
 ```py
@@ -135,6 +139,10 @@ And everything checked out. Since, as I mentioned above, the request to this sam
     - The third service returned a CORS error.
 
 No luck with third parties, so **I decided I needed to create a server-side proxy to bypass any CORS restrictions** that Openweather had in place.
+___
+<strong><h4 id="proxy">Unsuccessful attempt with server-side proxy</h4></strong>
+[Return to Contents ^](#contents)
+___
 
 I decided to do this with Node.js and Express because I have a fullstack Javascript certification working with the MEANstack and that's the server option I'm most familiar with.
 
@@ -163,8 +171,10 @@ After much headscratching and sifting through stackoverflow threads, I went back
 Because the other 3 API's never returned a CORS error and because the Geocoding API had worked previously server-side with my Python script, **I came to the conclusion that the problem was most likely Openweather's Geocoding API itself.**
 
 This was very disappointing after all the effort I put into trying to work around errors that I assumed were on my end. Nevertheless, I turned my attention to finding a suitable (and reliable) geocoding API.
-
-#### Attempt with Nominatim
+___
+<strong><h4 id="nominatim">Successful attempt with Proxy + Nominatim API</h4></strong>
+[Return to Contents ^](#contents)
+___
 
 [Nominatim](https://nominatim.org/) 'uses OpenStreetMap data to find locations on Earth by name and address (geocoding)'. 
 
@@ -174,3 +184,5 @@ Nominatim is free to use so long as one meets the requirements of their [usage p
 - Provide a valid HTTP Referer or User-Agent identifying the application (Added to Express app.)
 - Clearly display attribution as suitable for your medium.
 - Data is provided under the [ODbL license](https://opendatacommons.org/licenses/odbl/) which requires to share alike. N/a for this Non-commercial project.
+
+Finally! This fixed the issue! Good to know it wasn't my code but rather Openweather's API!
