@@ -46,7 +46,7 @@ while (valid_input == False):
         zipcode_response = requests.get(f"http://api.openweathermap.org/geo/1.0/zip?zip={zipcode},{country_code}&appid={config.weather_api_key}") 
 
         # Convert the response to a JSON object
-        zipcode_data = response_current.json()
+        zipcode_data = zipcode_response.json()
         
         # Assign coordinate values to variables
         lat = zipcode_data["coord"]["lat"]
