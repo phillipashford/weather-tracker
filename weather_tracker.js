@@ -14,13 +14,12 @@ axios.get('http://127.0.0.1:3000/proxy', {
     }
 })
 .then(function (response) {
-
-    var lat = response.lat;
-    var lon = response.lon;
+    var lat = response.data[0].lat;
+    var lon = response.data[0].lon;
 
     getWeather(lat, lon);
     getForecast(lat, lon);
-    getMapLayers();
+    getMapLayers(lat, lon);
 })
 .catch(function (error) {
     console.error(error);
@@ -63,22 +62,28 @@ async function getForecast(lat, lon) {
 }
 
 
-function getMapLayers() {
-  // Adding the Leaflet Map
-var map = L.map('map').setView([lat, lon], 7);
+async function getMapLayers(lat, lon) {
+    try {
+                // Adding the Leaflet Map
+        var map = L.map('map').setView([lat, lon], 7);
 
-//Base Layer
-L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
-              attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-              maxZoom: 16
-            }).addTo(map);
+        //Base Layer
+        L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
+                    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+                    maxZoom: 16
+                    }).addTo(map);
 
-const openWeatherLayers = ["clouds_new", "precipitation_new", "temp_new"];          
+        const openWeatherLayers = ["clouds_new", "precipitation_new", "temp_new"];          
 
-///Openweather Layer Template
-L.tileLayer(`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${weatherApiKey}`, {
-              maxZoom: 19,
-              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(map);
+        ///Openweather Layer Template
+        L.tileLayer(`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${weatherApiKey}`, {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(map);
+        
+    } catch (error) {
+        console.error(error);
+        console.log(error.message);
+    }
 
 }
