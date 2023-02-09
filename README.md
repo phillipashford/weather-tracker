@@ -41,6 +41,7 @@ ___
     - [x] temperature
 - [ ] Include webcam imagery closest to locale
 - [ ] Add weather warning alerts
+- [ ] Add in geolocation services
 - [ ] Add climate charts (precipitation and temperature) based on historical data
 - [ ] Add selection of API's for user to query from (e.g. NOAA, Openweather, NWS, etc.)
 
