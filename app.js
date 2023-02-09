@@ -14,6 +14,7 @@ const app = express();
 app.get('/proxy', (req, res) => {
   // Get URL from query
   const url = req.query.url;
+  console.log(url);
 
   // Send request to the outside API endpoint (url) using the request module
   request(url, (error, response, body) => {
@@ -32,4 +33,6 @@ app.get('/proxy', (req, res) => {
 const port = process.env.PORT || 3000;
 
 // Starts the Express app
-app.listen(port);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
