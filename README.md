@@ -76,11 +76,11 @@ ___
         1. Checked syntax/endpoint/variables
         1. Made proxy requests
         1. Built server-side proxy
-1. Create server-side proxy.
-    1. Initialized new Node.js project and installed the Express framework
-    1. 
-1. Shifting from jQuery to Axios for API requests
-1. Create server with Node.js and Express.
+            1. Initialized new Node.js project and installed the Express framework
+            1. Defined proxy endpoint
+            1. Wrote http request/response logic in Express app
+            1. Edited client-side jquery http requests to communicate with the server-side proxy
+        1. Changed GET request library from jQuery to Axios
 1. Build [webpage](https://github.com/phillipashford/weather-tracker/blob/main/index.html).
 
 
@@ -135,3 +135,9 @@ And everything checked out. Since, as I mentioned above, the request to this sam
 No luck with third parties, so **I decided I needed to create a server-side proxy to bypass any CORS restrictions** that Openweather had in place.
 
 I decided to do this with Node.js and Express because I have a fullstack Javascript certification working with the MEANstack and that's the server option I'm most familiar with.
+
+After building the proxy, I successfully received responses from 3 of the API endpoints - but had a `304 not modified error` from the geocoding API request. So I deleted my browser's cache and retried, with no luck. 
+
+Thinking perhaps the 'request' library had an issue, I updated it to no avail. Then I imported Axios and converted my GET requests to be handled by it instead of jQuery. Alas, no luck still. 
+
+After much headscratching and sifting through stackoverflow threads, I went back to my Python code and ran it again in a Jupyter notebook. This time it broke because of the GET request to the geocoding API. I knew then that the problem was most likely Openweather's Geocoding API itself.
