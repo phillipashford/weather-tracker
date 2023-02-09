@@ -19,7 +19,7 @@ app.get('/proxy', (req, res) => {
   // Define custom User-Agent header
   const headers = {
     'User-Agent': 'weather_tracker-v1.0',
-    'Referer': 'https://my-client-app.com/'
+    'Referer': 'https://github.com/phillipashford/weather-tracker'
   };
 
   // Send request to the outside API endpoint (url) using the request module
