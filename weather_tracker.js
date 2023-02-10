@@ -2,11 +2,23 @@
 
 import { weatherApiKey } from "./config.js";
 
+
 var lat;
 var lon;
 
 // Capture user input
 var query = prompt("Please enter your location");
+
+// Adding the Leaflet Map
+var map = L.map('map').setView([0, 0], 7);
+
+//Base Layer
+L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
+            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+            maxZoom: 16
+            }).addTo(map);
+
+
 
 axios.get('http://127.0.0.1:3000/proxy', {
     params: {
@@ -16,6 +28,8 @@ axios.get('http://127.0.0.1:3000/proxy', {
 .then(function (response) {
     var lat = response.data[0].lat;
     var lon = response.data[0].lon;
+
+    map.setView([lat, lon], 7);
 
     getWeather(lat, lon);
     getForecast(lat, lon);
@@ -64,14 +78,9 @@ async function getForecast(lat, lon) {
 
 async function getMapLayers(lat, lon) {
     try {
-                // Adding the Leaflet Map
-        var map = L.map('map').setView([lat, lon], 7);
 
-        //Base Layer
-        L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
-                    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-                    maxZoom: 16
-                    }).addTo(map);
+
+
 
         const openWeatherLayers = ["clouds_new", "precipitation_new", "temp_new"];          
 
@@ -87,3 +96,5 @@ async function getMapLayers(lat, lon) {
     }
 
 }
+
+  
