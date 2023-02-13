@@ -12,12 +12,14 @@
       #map button {
         position: relative;
         z-index: 401;
-        margin: 0.5em;
+        max-width: 30%;
       }
 
       #layer-controls {
         position : absolute;
         bottom   : 0;
+        width: 100%;
+        z-index: 1001;
       }
     </style>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
@@ -29,7 +31,7 @@
           <div id="map-container">
             <div id="map">
               <div id="layer-controls" class="mb-3">
-                <button id="clouds-button" class="btn btn-secondary btn-sm" data-bs-toggle="button">Cloud Cover</button>
+                <button id="clouds-button" type="button" class="btn btn-secondary btn-sm" data-bs-toggle="button" autocomplete="off">Clouds</button>
                 <button id="temp-button" class="btn btn-secondary btn-sm" data-bs-toggle="button">Temperature</button>
                 <button id="precipitation-button" class="btn btn-secondary btn-sm" data-bs-toggle="button">Precipitation</button>
               </div>
