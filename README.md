@@ -1,4 +1,4 @@
-# Building a Weather App Utilizing Third Party API's
+# A Weather Web App Reporting Data from 3rd Party API's: Built with JavaScript, Node.js/Express, Leaflet and Bootstrap 
 
 I built this program to understand how Python and Javascript work with API's, and to share my understanding and work process with others.
 
@@ -49,7 +49,7 @@ Tools I dropped from the project have been struck through.
     - Current weather API
     - 5 day forecast API
     - Map layers API
-- [Nominatim API](https://nominatim.org/release-docs/develop/api/Search/) 
+- [Nominatim API](https://nominatim.org/release-docs/develop/api/Search/) (for geocoding)
 - ~~Jupyter Notebook~~
 - ~~jQuery~~
 - ~~Axios~~
