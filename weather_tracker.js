@@ -121,24 +121,25 @@ function displayLayer(layer) {
 
         mapLayers[layer].tile.addTo(map);
         button[layer].classList.add("active");
-        button[layer].ariaPressed = true;
+        button[layer].ariaPressed = true; // WORKING? Maybe just through bootstrap.js
         activeLayer = layer;
 
     } else if (layer == activeLayer) {
 
         mapLayers[layer].tile.removeFrom(map);
         button[layer].classList.remove("active");
-        
+        button[layer].ariaPressed = false; // NOT WORKING
         activeLayer = undefined;
 
     } else {
 
         mapLayers[activeLayer].tile.removeFrom(map);
         button[activeLayer].classList.remove("active");
-
+        button[activeLayer].ariaPressed = false; // NOT WORKING
+        
         mapLayers[layer].tile.addTo(map);
         button[layer].classList.add("active");
-        button[layer].ariaPressed = true;
+        button[layer].ariaPressed = true; // WORKING? Maybe just through bootstrap.js
         activeLayer = layer;
 
     }
