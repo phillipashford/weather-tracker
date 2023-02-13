@@ -120,17 +120,25 @@ function displayLayer(layer) {
     if (activeLayer == undefined) {
 
         mapLayers[layer].tile.addTo(map);
+        button[layer].classList.add("active");
+        button[layer].ariaPressed = true;
         activeLayer = layer;
 
     } else if (layer == activeLayer) {
 
         mapLayers[layer].tile.removeFrom(map);
+        button[layer].classList.remove("active");
+        
         activeLayer = undefined;
 
     } else {
 
         mapLayers[activeLayer].tile.removeFrom(map);
+        button[activeLayer].classList.remove("active");
+
         mapLayers[layer].tile.addTo(map);
+        button[layer].classList.add("active");
+        button[layer].ariaPressed = true;
         activeLayer = layer;
 
     }
