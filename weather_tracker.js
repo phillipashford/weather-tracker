@@ -95,19 +95,38 @@ for (var i = 0; i < button.length; i++) {
     button[i].addEventListener("click", function() { displayLayer(layer) });
 }
 
+var clicked;
 
 function displayLayer(layer) {
-    
-    for (var i = 0; i < 3; i++) {
-        mapLayers[i].tile.removeFrom(map)
-    }
-
-    if (!map.hasLayer(mapLayers[layer].tile)) {
+    if (clicked != true && clicked != false) {
+        console.log("initial click")
         mapLayers[layer].tile.addTo(map);
+        clicked = true;
+        console.log(layer);
+
+    } else if (clicked == false) {
+        console.log("clicked = false")
+        console.log(layer);
+        for (var i = 0; i < 3; i++) {
+
+            if (mapLayers[i] != mapLayers[layer]) {
+                mapLayers[i].tile.removeFrom(map);
+
+            } else {
+
+                mapLayers[layer].tile.addTo(map);
+                clicked = true;
+            }
+        }
     } else {
-        mapLayers[layer].tile.removeFrom(map);
+        console.log("clicked = true")
+        for (var i = 0; i < 3; i++) {
+            // mapLayers[i] != mapLayers[layer];
+            mapLayers[i].tile.removeFrom(map);
+        }
+        console.log(layer);
+        mapLayers[layer].tile.addTo(map);
+        clicked = false;
     }
-
-
 }
         
