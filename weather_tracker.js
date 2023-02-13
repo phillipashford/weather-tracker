@@ -1,12 +1,7 @@
-// Imports
-
 import { weatherApiKey } from "./config.js";
-
 
 var lat;
 var lon;
-
-
 
 // Adding the Leaflet Map
 var map = L.map('map').setView([0, 0], 7);
@@ -20,7 +15,7 @@ L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_L
             maxZoom: 16
             }).addTo(map);
 
-
+// API request for coordinates from user query
 fetch('http://127.0.0.1:3000/proxy?url=' + encodeURIComponent(`https://nominatim.openstreetmap.org/?addressdetails=1&q=${query}&format=json&limit=1`))
 .then(function(response) {
   return response.json();
@@ -73,48 +68,46 @@ async function getForecast(lat, lon) {
   }
 }
 
+var layerType = ["clouds", "temp", "precipitation"];
+
 var mapLayers = [ 
-    {
-        buttonID: "cloud-cover-button",
-        layerName: "clouds_new",
-    }, 
-    {
-        buttonID: "temperature-button", 
-        layerName: "temperature_new"
-    }, 
-    {
-        buttonID: "precipitation-button", 
-        layerName: "precipitation_new"
-    }
 ];
+
+// Loop to populate mapLayer objects 
+for (var i = 0; i < layerType.length; i++) {
+
+    mapLayers.push({});
+
+    mapLayers[i].buttonID = `${layerType[i]}-button`;
+
+    mapLayers[i].layerName = `${layerType[i]}_new`;
+
+    mapLayers[i].tile = L.tileLayer(`https://tile.openweathermap.org/map/${mapLayers[i]["layerName"]}/{z}/{x}/{y}.png?appid=${weatherApiKey}`, {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+} 
 
 var button = document.getElementsByTagName("button");
 
 for (var i = 0; i < button.length; i++) {
-    button[i].addEventListener("click", displayLayer);
+    let layer = i;
+    button[i].addEventListener("click", function() { displayLayer(layer) });
 }
 
 
-function displayLayer() {
-    // Loops through all buttons, assigning map layer to unique variable
-    for (var i = 0; i < button.length; i++) {
-
-        let mapLayer =  requestedLayer_[i] = L.tileLayer(`https://tile.openweathermap.org/map/${mapLayers[i]["layerName"]}/{z}/{x}/{y}.png?appid=${weatherApiKey}`, {
-                                                        maxZoom: 19,
-                                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                                                        });
-
-        for (var i = 0; i < mapLayers.length; i++) {
-            mapLayers["requestedLayer_" + i] = mapLayers[i];
-          } 
-
-}
-
-    // Removes any present layers
-    for (var i = 0; i < button.length; i++) {
-        requestedLayer_[i].removeFrom(map);
+function displayLayer(layer) {
+    
+    for (var i = 0; i < 3; i++) {
+        mapLayers[i].tile.removeFrom(map)
     }
 
-    requestedLayer_[i].addTo(map)
+    if (!map.hasLayer(mapLayers[layer].tile)) {
+        mapLayers[layer].tile.addTo(map);
+    } else {
+        mapLayers[layer].tile.removeFrom(map);
+    }
+
+
 }
         
