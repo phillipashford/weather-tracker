@@ -40,17 +40,19 @@ ___
 
 [Return to Contents ^](#contents)
 ___
-- Python
+Tools I dropped from the project have been struck through.
+
+- ~~Python~~
 - JavaScript
 - [Openweather's API's](https://openweathermap.org/)
-    - Geocoding API
+    - ~~Geocoding API~~
     - Current weather API
     - 5 day forecast API
     - Map layers API
 - [Nominatim API](https://nominatim.org/release-docs/develop/api/Search/) 
-- Jupyter Notebook
-- jQuery
-- Axios
+- ~~Jupyter Notebook~~
+- ~~jQuery~~
+- ~~Axios~~
 - Leaflet
 - Bootstrap
 - Node.js/Express
