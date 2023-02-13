@@ -75,7 +75,7 @@ After deciding to make a complete weather application, I converted the code to [
 ### Steps I Took
 
 1. Write [Python script](https://github.com/phillipashford/weather-tracker/blob/main/weather_tracker.py).
-1. Convert to JavaScript.
+1. Converted to JavaScript.
     1. Accidental API key exposure to public repo
         1. Deactivated exposed key on Openweather's dashboard
         1. Replaced naked key with variable in js file
@@ -94,7 +94,9 @@ After deciding to make a complete weather application, I converted the code to [
             1. Edited client-side jquery http requests to communicate with the server-side proxy
         1. Changed GET request library from jQuery to Axios
         1. Replaced Openweather geocodoing API with [Nominatim API](#nominatim)
-1. Build [webpage](https://github.com/phillipashford/weather-tracker/blob/main/index.html).
+1. Changed GET requests from Axios to vanilla JS
+1. Wrote logic for displaying map layers from Openweather's map layers API
+1. Built [webpage](https://github.com/phillipashford/weather-tracker/blob/main/index.html).
 
 
 
