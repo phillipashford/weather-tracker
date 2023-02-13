@@ -138,19 +138,22 @@ var activeLayer;
 
 function displayLayer(layer) {
 
-    if (!activeLayer) {
+    if (activeLayer == undefined) {
 
         mapLayers[layer].tile.addTo(map);
         activeLayer = layer;
+        console.log("Loop 1 - layer: ", layer, "activeLayer: ", activeLayer);
 
     } else if (activeLayer && layer == activeLayer) {
 
         mapLayers[layer].tile.removeFrom(map);
+        console.log("Loop 2 - layer: ", layer, "activeLayer: ", activeLayer);
 
     } else {
         
         mapLayers[activeLayer].tile.removeFrom(map);
         mapLayers[layer].tile.addTo(map);
+        console.log("Loop 3 - layer: ", layer, "activeLayer: ", activeLayer);
 
     }
 }
