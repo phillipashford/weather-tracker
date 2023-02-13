@@ -95,45 +95,6 @@ for (var i = 0; i < button.length; i++) {
     button[i].addEventListener("click", function() { displayLayer(layer) });
 }
 
-// var clicked;
-
-// function displayLayer(layer) {
-//     if (clicked != true && clicked != false) {
-//         console.log("initial click")
-//         mapLayers[layer].tile.addTo(map);
-//         clicked = true;
-//         console.log(layer);
-
-//     } else if (clicked == false) {
-//         console.log("clicked = false")
-//         console.log(layer);
-//         for (var i = 0; i < 3; i++) {
-
-//             if (mapLayers[i] != mapLayers[layer]) {
-//                 mapLayers[i].tile.removeFrom(map);
-
-//             } else {
-
-//                 mapLayers[layer].tile.addTo(map);
-//                 clicked = true;
-//             }
-//         }
-//     } else {
-//         console.log("clicked = true")
-//         for (var i = 0; i < 3; i++) {
-//             // mapLayers[i] != mapLayers[layer];
-//             mapLayers[i].tile.removeFrom(map);
-//         }
-//         console.log(layer);
-//         mapLayers[layer].tile.addTo(map);
-//         clicked = false;
-//     }
-
-//     when the initial click happens, the targeted layer is displayed and clicked becomes true
-//     if clicked is true && I'm clicking on the active layer then the active layer is removed and clicked becomes false
-//     if clicked is true and i'm clicking on another layer, the active layer is removed, the targeted layer is added, and the targeted layer is reassigned as the active layer
-//     If clicked is false, the targeted layer is removed and clicked becomes true
-
 var activeLayer;
 
 function displayLayer(layer) {
@@ -142,18 +103,17 @@ function displayLayer(layer) {
 
         mapLayers[layer].tile.addTo(map);
         activeLayer = layer;
-        console.log("Loop 1 - layer: ", layer, "activeLayer: ", activeLayer);
 
-    } else if (activeLayer && layer == activeLayer) {
+    } else if (layer == activeLayer) {
 
         mapLayers[layer].tile.removeFrom(map);
-        console.log("Loop 2 - layer: ", layer, "activeLayer: ", activeLayer);
+        activeLayer = undefined;
 
     } else {
         
         mapLayers[activeLayer].tile.removeFrom(map);
         mapLayers[layer].tile.addTo(map);
-        console.log("Loop 3 - layer: ", layer, "activeLayer: ", activeLayer);
+        activeLayer = layer;
 
     }
 }
