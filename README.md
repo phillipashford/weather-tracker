@@ -48,3 +48,4 @@ After much effort and troubleshooting, I double checked the previously successfu
 - Add in geolocation services
 - Add climate charts (precipitation and temperature) based on historical data
 - Add selection of API's for user to query from (e.g. NOAA, Openweather, NWS, etc.)
+- Combined API weather and forecasts
