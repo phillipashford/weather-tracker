@@ -3,3 +3,4 @@ config.*
 *.pyc
 node_modules*
 package*
+workflow.md
