@@ -5,7 +5,7 @@ var lat;
 var lon;
 
 // Adding the Leaflet Map to the HTML element with id "map"
-var map = L.map('map').setView([0, 0], 7);
+var map = L.map('mapid').setView([0, 0], 7);
 
 // Capturing user input as a location
 var query = prompt("Please enter your location");
@@ -49,6 +49,11 @@ async function getWeather(lat, lon) {
         // Logging the weather data and a description of the current conditions
         console.log(data);
         console.log(`Current Conditions | ${data.weather[0].description}`);
+
+        // Getting current weather elements in the HTML document
+        var button = document.getElementsByTagName("button");
+
+
     } catch (error) {
         console.error(error);
         console.log(error.message);
@@ -101,7 +106,8 @@ for (var i = 0; i < layerType.length; i++) {
 }
 
 // Getting all buttons in the HTML document
-var button = document.getElementsByTagName("button");
+var layerBtnDiv = document.getElementById("layer-selector");
+var button = layerBtnDiv.getElementsByTagName("button");
 
 // Loop to add click event listeners to each button
 for (var i = 0; i < button.length; i++) {
