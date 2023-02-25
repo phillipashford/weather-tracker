@@ -58,7 +58,7 @@ for (var i = 0; i < layerType.length; i++) {
     mapLayers[i].layerName = `${layerType[i]}_new`;
 
     // Adding the tile layer for each layer using the OpenWeatherMap API
-    mapLayers[i].tile = L.tileLayer(`https://tile.openweathermap.org/map/${mapLayers[i]["layerName"]}/{z}/{x}/{y}.png?appid=a855b57546ba54f91cb99e2a482a91eb`, {
+    mapLayers[i].tile = L.tileLayer(`https://tile.openweathermap.org/map/${mapLayers[i]["layerName"]}/{z}/{x}/{y}.png?appid=${process.env.OPENWEATHER_API_KEY}`, {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
